@@ -484,7 +484,7 @@ public class FetLifeApiIntentService extends IntentService {
         RequestBody pictureBody = RequestBody.create(MediaType.parse(contentResolver.getType(uri)), BytesUtil.getBytes(contentResolver.openInputStream(uri)));
         RequestBody isAvatarPart = RequestBody.create(MediaType.parse("text/plain"), Boolean.toString(false));
         RequestBody friendsOnlyPart = RequestBody.create(MediaType.parse("text/plain"), Boolean.toString(false));
-        RequestBody captionPart = RequestBody.create(MediaType.parse("text/plain"), "");
+        RequestBody captionPart = RequestBody.create(MediaType.parse("text/plain"), params[1]);
         RequestBody isFromUserPart = RequestBody.create(MediaType.parse("text/plain"), Boolean.toString(true));
 
         Call<ResponseBody> uploadPictureCall = getFetLifeApi().uploadPicture(FetLifeService.AUTH_HEADER_PREFIX + getFetLifeApplication().getAccessToken(), pictureBody, isAvatarPart, friendsOnlyPart, captionPart, isFromUserPart);
